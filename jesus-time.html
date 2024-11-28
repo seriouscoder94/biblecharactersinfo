@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Characters from Jesus' Time - Bible Characters</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(to bottom, #87CEEB, #1E90FF);
+            background-attachment: fixed;
+            color: #333;
+            position: relative;
+            min-height: 100vh;
+        }
+        /* Add an overlay with text explaining the background */
+        body::after {
+            content: "Background: A Calming Blue Sky Gradient";
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 8px 15px;
+            font-size: 0.8rem;
+            border-top-left-radius: 8px;
+            z-index: 1000;
+        }
+        /* Add a subtle overlay to improve text readability */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 0;
+        }
+        .content {
+            position: relative;
+            z-index: 1;
+            background-color: rgba(255, 255, 255, 0.95);
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+        .navbar {
+            background-color: rgba(44, 62, 80, 0.95);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        .nav-links a:hover {
+            background-color: #34495e;
+        }
+        .character-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        .character-card {
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            height: 100%;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .male-card {
+            border-left: 5px solid #4169E1;  /* Royal Blue */
+            background: linear-gradient(to right, rgba(65, 105, 225, 0.1), rgba(255, 255, 255, 0.95));
+        }
+        .female-card {
+            border-left: 5px solid #FF69B4;  /* Hot Pink */
+            background: linear-gradient(to right, rgba(255, 105, 180, 0.1), rgba(255, 255, 255, 0.95));
+        }
+        .character-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        .character-card h3 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+            font-size: 1.4rem;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 0.5rem;
+        }
+        .character-card p {
+            margin-bottom: 1rem;
+            color: #2c3e50;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        .scripture-list {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(52, 152, 219, 0.3);
+        }
+        .scripture-list h4 {
+            color: #34495e;
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+        .scripture-list ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .scripture-list li {
+            margin-bottom: 0.7rem;
+            padding: 0.5rem 0.8rem;
+            background-color: rgba(245, 246, 250, 0.9);
+            border-radius: 6px;
+            font-size: 0.95rem;
+            color: #2c3e50;
+            border-left: 3px solid #3498db;
+        }
+        h1 {
+            text-align: center;
+            color: white;
+            margin-bottom: 2rem;
+            font-size: 2.8rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            background-color: rgba(44, 62, 80, 0.85);
+            padding: 1rem;
+            border-radius: 12px;
+            backdrop-filter: blur(5px);
+        }
+        h2 {
+            margin: 2.5rem 0 1.5rem;
+            color: #2c3e50;
+            padding: 0.8rem 1.2rem;
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .main-figure {
+            margin-bottom: 2.5rem;
+        }
+        .main-figure .character-card {
+            background-color: rgba(255, 255, 255, 0.97);
+            border: 2px solid rgba(52, 152, 219, 0.3);
+        }
+        @media (max-width: 768px) {
+            .character-grid {
+                grid-template-columns: 1fr;
+            }
+            h1 {
+                font-size: 2rem;
+                padding: 0.8rem;
+            }
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+            .character-card {
+                margin: 0.5rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="jesus-time.html">Jesus' Time</a>
+            <a href="old-testament.html">Old Testament</a>
+            <a href="new-testament.html">New Testament</a>
+        </div>
+    </nav>
+
+    <div class="content">
+        <h1>Characters from Jesus' Time</h1>
+        
+        <div class="main-figure">
+            <div class="character-card male-card">
+                <h3>Jesus Christ</h3>
+                <p>The Son of God, the central figure of Christianity, whose life, death, and resurrection are the foundation of Christian faith.</p>
+                <div class="scripture-list">
+                    <h4>Scripture References:</h4>
+                    <ul>
+                        <li>Birth: Matthew 1:18-25, Luke 2:1-20</li>
+                        <li>Baptism: Matthew 3:13-17, Mark 1:9-11, Luke 3:21-22</li>
+                        <li>Ministry Begins: Matthew 4:17, Mark 1:14-15</li>
+                        <li>Sermon on the Mount: Matthew 5-7</li>
+                        <li>Transfiguration: Matthew 17:1-13, Mark 9:2-13, Luke 9:28-36</li>
+                        <li>Last Supper: Matthew 26:17-30, Mark 14:12-26, Luke 22:7-23</li>
+                        <li>Crucifixion: Matthew 27:32-56, Mark 15:21-41, Luke 23:26-49, John 19:17-37</li>
+                        <li>Resurrection: Matthew 28:1-20, Mark 16:1-8, Luke 24:1-53, John 20:1-31</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <h2>Political Leaders</h2>
+        <div class="character-grid">
+            <div class="character-card male-card">
+                <h3>King Herod the Great</h3>
+                <p>The Roman-appointed king of Judea who ordered the killing of male infants in Bethlehem.</p>
+                <div class="scripture-list">
+                    <h4>Scripture References:</h4>
+                    <ul>
+                        <li>Meeting with Magi: Matthew 2:1-8</li>
+                        <li>Killing of Infants: Matthew 2:16-18</li>
+                        <li>Death: Matthew 2:19</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="character-card male-card">
+                <h3>Herod Antipas</h3>
+                <p>Son of Herod the Great, ruler of Galilee during Jesus's ministry. He ordered John the Baptist's execution and met Jesus during his trial.</p>
+                <div class="scripture-list">
+                    <h4>Scripture References:</h4>
+                    <ul>
+                        <li>Marriage to Herodias: Matthew 14:3-4, Mark 6:17-18</li>
+                        <li>Execution of John the Baptist: Matthew 14:1-12, Mark 6:14-29</li>
+                        <li>Meeting with Jesus: Luke 23:6-12</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="character-card male-card">
+                <h3>Pontius Pilate</h3>
+                <p>The Roman governor who presided over Jesus's trial and ordered his crucifixion.</p>
+                <div class="scripture-list">
+                    <h4>Scripture References:</h4>
+                    <ul>
+                        <li>Trial of Jesus: Matthew 27:11-26, Mark 15:1-15, Luke 23:1-25, John 18:28-19:16</li>
+                        <li>Jesus's Death: Matthew 27:57-66, Mark 15:42-47, Luke 23:50-56, John 19:38-42</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <h2>The Twelve Disciples</h2>
+        <div class="character-grid">
+            <div class="character-card male-card">
+                <h3>Simon Peter</h3>
+                <p>A fisherman who became one of Jesus's closest disciples.</p>
+                <div class="scripture-list">
+                    <h4>Scripture References:</h4>
+                    <ul>
+                        <li>Call to Discipleship: Matthew 4:18-20, Mark 1:16-18, Luke 5:1-11</li>
+                        <li>Walking on Water: Matthew 14:28-31</li>
+                        <li>Confession of Christ: Matthew 16:13-20</li>
+                        <li>Transfiguration: Matthew 17:1-13</li>
+                        <li>Denial of Jesus: Matthew 26:69-75</li>
+                        <li>Restoration: John 21:15-19</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="character-card male-card">
+                <h3>Andrew</h3>
+                <p>Peter's brother, also a fisherman, who was one of the first to follow Jesus.</p>
+                <div class="scripture-list">
+                    <h4>Scripture References:</h4>
+                    <ul>
+                        <li>Call to Discipleship: Matthew 4:18-20, Mark 1:16-18</li>
+                        <li>Introducing Peter to Jesus: John 1:40-42</li>
+                        <li>Feeding the 5,000: John 6:8-9</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="character-card male-card">
+                <h3>James (son of Zebedee)</h3>
+                <p>One of the "Sons of Thunder," part of Jesus's inner circle along with Peter and John.</p>
+                <div class="scripture-list">
+                    <h4>Scripture References:</h4>
+                    <ul>
+                        <li>Call to Discipleship: Matthew 4:21-22, Mark 1:19-20</li>
+                        <li>Request for Seats: Matthew 20:20-23, Mark 10:35-40</li>
+                        <li>Transfiguration: Matthew 17:1-13, Mark 9:2-13, Luke 9:28-36</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="character-card male-card">
+                <h3>John</h3>
+                <p>The "beloved disciple," brother of James and author of the Gospel of John.</p>
+                <div class="scripture-list">
+                    <h4>Scripture References:</h4>
+                    <ul>
+                        <li>Call to Discipleship: Matthew 4:21-22</li>
+                        <li>Transfiguration: Mark 9:2-13</li>
+                        <li>At the Last Supper: John 13:23-25</li>
+                        <li>At the Cross: John 19:26-27</li>
+                        <li>At the Empty Tomb: John 20:1-10</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="character-card male-card">
+                <h3>Philip</h3>
+                <p>From Bethsaida, he brought Nathanael to Jesus and showed practical concern during the feeding of the 5,000.</p>
+                <div class="scripture-list">
+                    <h4>Scripture References:</h4>
+                    <ul>
+                        <li>Call to Discipleship: John 1:43-51</li>
+                        <li>Feeding the 5,000: John 6:5-7</li>
+                        <li>Request from Greeks: John 12:20-22</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="character-card male-card">
+                <h3>Bartholomew (Nathanael)</h3>
+                <p>The one whom Jesus said had no deceit. He was brought to Jesus by Philip.</p>
+                <div class="scripture-list">
+                    <h4>Scripture References:</h4>
+                    <ul>
+                        <li>Call to Discipleship: John 1:43-51</li>
+                        <li>Jesus's Praise: John 1:47-51</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="character-card male-card">
+                <h3>Matthew (Levi)</h3>
+                <p>A former tax collector who wrote the Gospel of Matthew. He left his profitable career to follow Jesus.</p>
+                <div class="scripture-list">
+                    <h4>Scripture References:</h4>
+                    <ul>
+                        <li>Call to Discipleship: Matthew 9:9-13, Mark 2:13-14, Luke 5:27-28</li>
+                        <li>Feast for Jesus: Matthew 9:10-13, Mark 2:15-17, Luke 5:29-32</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="character-card male-card">
+                <h3>Thomas</h3>
+                <p>Called "Didymus" (the twin), known for doubting Jesus's resurrection until seeing him personally.</p>
+                <div class="scripture-list">
+                    <h4>Scripture References:</h4>
+                    <ul>
+                        <li>Willing to Die with Jesus: John 11:16</li>
+                        <li>Doubting the Resurrection: John 20:24-25</li>
+                        <li>Seeing the Risen Jesus: John 20:26-29</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="character-card male-card">
+                <h3>James (son of Alphaeus)</h3>
+                <p>Also known as James the Less, one of the twelve disciples.</p>
+                <div class="scripture-list">
+                    <h4>Scripture References:</h4>
+                    <ul>
+                        <li>Call to Discipleship: Matthew 10:3, Mark 3:18, Luke 6:15, Acts 1:13</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="character-card male-card">
+                <h3>Thaddaeus (Judas son of James)</h3>
+                <p>Also called Lebbaeus, one of the twelve disciples.</p>
+                <div class="scripture-list">
+                    <h4>Scripture References:</h4>
+                    <ul>
+                        <li>Call to Discipleship: Matthew 10:3, Mark 3:18, Luke 6:15, Acts 1:13</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="character-card male-card">
+                <h3>Simon the Zealot</h3>
+                <p>A member of the zealous nationalist party before following Jesus.</p>
+                <div class="scripture-list">
+                    <h4>Scripture References:</h4>
+                    <ul>
+                        <li>Call to Discipleship: Matthew 10:4, Mark 3:18, Luke 6:15, Acts 1:13</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="character-card male-card">
+                <h3>Judas Iscariot</h3>
+                <p>The disciple who betrayed Jesus for thirty pieces of silver.</p>
+                <div class="scripture-list">
+                    <h4>Scripture References:</h4>
+                    <ul>
+                        <li>Call to Discipleship: Matthew 10:4, Mark 3:19, Luke 6:15, Acts 1:13</li>
+                        <li>Betrayal of Jesus: Matthew 26:14-16, Mark 14:10-11, Luke 22:3-6</li>
+                        <li>Death: Matthew 27:3-5, Acts 1:18-19</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <h2>Religious Leaders</h2>
+        <div class="character-grid">
+            <div class="character-card male-card">
+                <h3>Caiaphas</h3>
+                <p>The high priest who played a key role in the plot to kill Jesus.</p>
+                <div class="scripture-list">
+                    <h4>Scripture References:</h4>
+                    <ul>
+                        <li>Plot Against Jesus: John 11:49-53</li>
+                        <li>Jesus's Trial: Matthew 26:57-68, Mark 14:53-65</li>
+                        <li>Questioning Peter: John 18:24</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="character-card male-card">
+                <h3>Annas</h3>
+                <p>Former high priest and father-in-law of Caiaphas, who first questioned Jesus after his arrest.</p>
+                <div class="scripture-list">
+                    <h4>Scripture References:</h4>
+                    <ul>
+                        <li>Questioning Jesus: John 18:13-24</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <h2>Pharisees</h2>
+        <div class="character-grid">
+            <div class="character-card male-card">
+                <h3>Nicodemus</h3>
+                <p>A Pharisee and member of the Sanhedrin who came to Jesus at night and later helped with his burial.</p>
+                <div class="scripture-list">
+                    <h4>Scripture References:</h4>
+                    <ul>
+                        <li>Night Visit to Jesus: John 3:1-21</li>
+                        <li>Defending Jesus: John 7:50-52</li>
+                        <li>Burial of Jesus: John 19:39-42</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="character-card male-card">
+                <h3>Gamaliel</h3>
+                <p>A respected Pharisee and teacher of the Law who advised the Sanhedrin regarding the early Christian movement.</p>
+                <div class="scripture-list">
+                    <h4>Scripture References:</h4>
+                    <ul>
+                        <li>Counsel to the Sanhedrin: Acts 5:34-40</li>
+                        <li>Paul's Teacher: Acts 22:3</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="character-card male-card">
+                <h3>Simon the Pharisee</h3>
+                <p>A Pharisee who invited Jesus to dine at his house, where a sinful woman anointed Jesus's feet.</p>
+                <div class="scripture-list">
+                    <h4>Scripture References:</h4>
+                    <ul>
+                        <li>Dinner with Jesus: Luke 7:36-50</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <h2>Sadducees</h2>
+        <div class="character-grid">
+            <div class="character-card male-card">
+                <h3>Caiaphas</h3>
+                <p>The high priest and a Sadducee who played a key role in the plot to kill Jesus.</p>
+                <div class="scripture-list">
+                    <h4>Scripture References:</h4>
+                    <ul>
+                        <li>Plot Against Jesus: John 11:49-53</li>
+                        <li>Jesus's Trial: Matthew 26:57-68, Mark 14:53-65</li>
+                        <li>Questioning Peter: John 18:24</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="character-card male-card">
+                <h3>Annas</h3>
+                <p>Former high priest, a Sadducee, and father-in-law of Caiaphas, who first questioned Jesus after his arrest.</p>
+                <div class="scripture-list">
+                    <h4>Scripture References:</h4>
+                    <ul>
+                        <li>Questioning Jesus: John 18:13-24</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="character-card male-card">
+                <h3>John and Alexander</h3>
+                <p>Members of the high-priestly family who were present at Peter and John's trial.</p>
+                <div class="scripture-list">
+                    <h4>Scripture References:</h4>
+                    <ul>
+                        <li>Trial of Peter and John: Acts 4:6</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <h2>Other Notable Figures</h2>
+        <div class="character-grid">
+            <div class="character-card female-card">
+                <h3>Mary (Mother of Jesus)</h3>
+                <p>The virgin mother of Jesus, chosen by God. She demonstrated great faith and remained devoted to Jesus throughout his ministry.</p>
+                <div class="scripture-list">
+                    <h4>Scripture References:</h4>
+                    <ul>
+                        <li>Annunciation: Luke 1:26-38</li>
+                        <li>Visit to Elizabeth: Luke 1:39-56</li>
+                        <li>Birth of Jesus: Luke 2:1-20</li>
+                        <li>Presentation at Temple: Luke 2:22-38</li>
+                        <li>Flight to Egypt: Matthew 2:13-15</li>
+                        <li>At Wedding in Cana: John 2:1-11</li>
+                        <li>At the Cross: John 19:25-27</li>
+                        <li>In the Upper Room: Acts 1:14</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="character-card male-card">
+                <h3>Joseph</h3>
+                <p>The earthly father of Jesus, a carpenter from Nazareth who was chosen to raise Jesus.</p>
+                <div class="scripture-list">
+                    <h4>Scripture References:</h4>
+                    <ul>
+                        <li>Betrothal and Dream: Matthew 1:18-25</li>
+                        <li>Journey to Bethlehem: Luke 2:1-5</li>
+                        <li>Flight to Egypt: Matthew 2:13-15</li>
+                        <li>Return to Nazareth: Matthew 2:19-23</li>
+                        <li>Finding Jesus in Temple: Luke 2:41-52</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="character-card male-card">
+                <h3>John the Baptist</h3>
+                <p>The prophet who prepared the way for Jesus's ministry and baptized him in the Jordan River.</p>
+                <div class="scripture-list">
+                    <h4>Scripture References:</h4>
+                    <ul>
+                        <li>Birth: Luke 1:5-25, 57-80</li>
+                        <li>Ministry: Matthew 3:1-12, Mark 1:1-8, Luke 3:1-20</li>
+                        <li>Baptism of Jesus: Matthew 3:13-17, Mark 1:9-11, Luke 3:21-22</li>
+                        <li>Imprisonment and Death: Matthew 14:1-12, Mark 6:14-29, Luke 3:19-20</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="character-card female-card">
+                <h3>Mary Magdalene</h3>
+                <p>A devoted follower of Jesus who was delivered from seven demons.</p>
+                <div class="scripture-list">
+                    <h4>Scripture References:</h4>
+                    <ul>
+                        <li>Deliverance: Luke 8:2</li>
+                        <li>At the Cross: Matthew 27:55-56, Mark 15:40-41, John 19:25</li>
+                        <li>At the Burial: Matthew 27:61, Mark 15:47</li>
+                        <li>At the Resurrection: Matthew 28:1-10, Mark 16:1-8, John 20:1-18</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="character-card female-card">
+                <h3>Martha and Mary</h3>
+                <p>Sisters of Lazarus from Bethany who were close friends of Jesus.</p>
+                <div class="scripture-list">
+                    <h4>Scripture References:</h4>
+                    <ul>
+                        <li>Jesus's Visit: Luke 10:38-42</li>
+                        <li>Lazarus's Death and Resurrection: John 11:1-44</li>
+                        <li>Dinner for Jesus: John 12:1-11</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="character-card male-card">
+                <h3>Lazarus</h3>
+                <p>Brother of Martha and Mary whom Jesus raised from the dead.</p>
+                <div class="scripture-list">
+                    <h4>Scripture References:</h4>
+                    <ul>
+                        <li>Death and Resurrection: John 11:1-44</li>
+                        <li>Dinner at Bethany: John 12:1-11</li>
+                        <li>Plot to Kill Him: John 12:9-11</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="character-card male-card">
+                <h3>Zacchaeus</h3>
+                <p>A chief tax collector who climbed a sycamore tree to see Jesus and later repented.</p>
+                <div class="scripture-list">
+                    <h4>Scripture References:</h4>
+                    <ul>
+                        <li>Meeting Jesus: Luke 19:1-10</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="character-card male-card">
+                <h3>Barabbas</h3>
+                <p>The prisoner whom the crowd chose to release instead of Jesus.</p>
+                <div class="scripture-list">
+                    <h4>Scripture References:</h4>
+                    <ul>
+                        <li>Release: Matthew 27:15-26, Mark 15:6-15, Luke 23:18-25, John 18:39-40</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="character-card male-card">
+                <h3>Simon of Cyrene</h3>
+                <p>The man compelled to carry Jesus's cross to Golgotha.</p>
+                <div class="scripture-list">
+                    <h4>Scripture References:</h4>
+                    <ul>
+                        <li>Carrying the Cross: Matthew 27:32, Mark 15:21, Luke 23:26</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="character-card female-card">
+                <h3>Salome</h3>
+                <p>The mother of James and John, who was present at Jesus's crucifixion and resurrection.</p>
+                <div class="scripture-list">
+                    <h4>Scripture References:</h4>
+                    <ul>
+                        <li>Request for Seats: Matthew 20:20-23, Mark 10:35-40</li>
+                        <li>At the Cross: Mark 15:40</li>
+                        <li>At the Empty Tomb: Mark 16:1-8</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="character-card female-card">
+                <h3>Joanna</h3>
+                <p>Wife of Chuza (Herod's steward), who supported Jesus's ministry and witnessed the resurrection.</p>
+                <div class="scripture-list">
+                    <h4>Scripture References:</h4>
+                    <ul>
+                        <li>Supporting Jesus's Ministry: Luke 8:3</li>
+                        <li>At the Cross: Luke 23:49</li>
+                        <li>At the Empty Tomb: Luke 24:10</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="character-card male-card">
+                <h3>Bartimaeus</h3>
+                <p>The blind beggar who called out to Jesus and was healed near Jericho.</p>
+                <div class="scripture-list">
+                    <h4>Scripture References:</h4>
+                    <ul>
+                        <li>Healing: Mark 10:46-52, Luke 18:35-43</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="character-card male-card">
+                <h3>Jairus</h3>
+                <p>A synagogue leader whose daughter was raised from the dead by Jesus.</p>
+                <div class="scripture-list">
+                    <h4>Scripture References:</h4>
+                    <ul>
+                        <li>Daughter's Healing: Matthew 9:18-26, Mark 5:21-43, Luke 8:40-56</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="character-card female-card">
+                <h3>The Woman with the Issue of Blood</h3>
+                <p>A woman who was healed by touching Jesus' garment after suffering for 12 years.</p>
+                <div class="scripture-list">
+                    <h4>Scripture References:</h4>
+                    <ul>
+                        <li>Healing: Matthew 9:20-22, Mark 5:25-34, Luke 8:43-48</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="character-card male-card">
+                <h3>The Centurion</h3>
+                <p>A Roman officer whose great faith impressed Jesus, leading to his servant's healing.</p>
+                <div class="scripture-list">
+                    <h4>Scripture References:</h4>
+                    <ul>
+                        <li>Servant's Healing: Matthew 8:5-13, Luke 7:1-10</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="character-card male-card">
+                <h3>Zacchaeus</h3>
+                <p>A wealthy tax collector who climbed a sycamore tree to see Jesus and later repented.</p>
+                <div class="scripture-list">
+                    <h4>Scripture References:</h4>
+                    <ul>
+                        <li>Meeting Jesus: Luke 19:1-10</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="character-card male-card">
+                <h3>Blind Bartimaeus</h3>
+                <p>A blind beggar who persistently called out to Jesus and received his sight.</p>
+                <div class="scripture-list">
+                    <h4>Scripture References:</h4>
+                    <ul>
+                        <li>Healing: Mark 10:46-52, Luke 18:35-43</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="character-card female-card">
+                <h3>The Woman at the Well</h3>
+                <p>A Samaritan woman who encountered Jesus at Jacob's well and brought her town to meet him.</p>
+                <div class="scripture-list">
+                    <h4>Scripture References:</h4>
+                    <ul>
+                        <li>Encounter with Jesus: John 4:1-42</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="character-card female-card">
+                <h3>Mary of Bethany</h3>
+                <p>Sister of Martha and Lazarus who anointed Jesus' feet and chose to sit at his feet and learn.</p>
+                <div class="scripture-list">
+                    <h4>Scripture References:</h4>
+                    <ul>
+                        <li>Learning from Jesus: Luke 10:38-42</li>
+                        <li>Anointing Jesus: John 12:1-8</li>
+                        <li>Lazarus' Death: John 11:1-44</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="character-card male-card">
+                <h3>Joseph of Arimathea</h3>
+                <p>A wealthy member of the Sanhedrin who provided his tomb for Jesus' burial.</p>
+                <div class="scripture-list">
+                    <h4>Scripture References:</h4>
+                    <ul>
+                        <li>Burial of Jesus: Matthew 27:57-60, Mark 15:42-46, Luke 23:50-53, John 19:38-42</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="character-card female-card">
+                <h3>Salome</h3>
+                <p>Mother of James and John, who requested special positions for her sons in Jesus' kingdom.</p>
+                <div class="scripture-list">
+                    <h4>Scripture References:</h4>
+                    <ul>
+                        <li>Request for Sons: Matthew 20:20-28</li>
+                        <li>At the Cross: Mark 15:40</li>
+                        <li>At the Tomb: Mark 16:1</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="character-card female-card">
+                <h3>Joanna</h3>
+                <p>Wife of Chuza (Herod's steward) who supported Jesus' ministry and witnessed the resurrection.</p>
+                <div class="scripture-list">
+                    <h4>Scripture References:</h4>
+                    <ul>
+                        <li>Supporting Jesus: Luke 8:1-3</li>
+                        <li>At the Tomb: Luke 24:10</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="character-card female-card">
+                <h3>Susanna</h3>
+                <p>One of the women who supported Jesus' ministry with their own means.</p>
+                <div class="scripture-list">
+                    <h4>Scripture References:</h4>
+                    <ul>
+                        <li>Supporting Jesus: Luke 8:1-3</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="character-card male-card">
+                <h3>Malchus</h3>
+                <p>The high priest's servant whose ear was cut off by Peter and healed by Jesus.</p>
+                <div class="scripture-list">
+                    <h4>Scripture References:</h4>
+                    <ul>
+                        <li>Ear Cut Off: John 18:10</li>
+                        <li>Healing: Luke 22:51</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="character-card male-card">
+                <h3>Simon of Cyrene</h3>
+                <p>The man who was compelled to carry Jesus' cross to Golgotha.</p>
+                <div class="scripture-list">
+                    <h4>Scripture References:</h4>
+                    <ul>
+                        <li>Carrying the Cross: Matthew 27:32, Mark 15:21, Luke 23:26</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="character-card male-card">
+                <h3>The Penitent Thief</h3>
+                <p>One of the criminals crucified with Jesus who repented and was promised paradise.</p>
+                <div class="scripture-list">
+                    <h4>Scripture References:</h4>
+                    <ul>
+                        <li>Conversation with Jesus: Luke 23:39-43</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="character-card female-card">
+                <h3>The Syrophoenician Woman</h3>
+                <p>A Gentile woman whose great faith and persistence led to her daughter's healing.</p>
+                <div class="scripture-list">
+                    <h4>Scripture References:</h4>
+                    <ul>
+                        <li>Daughter's Healing: Matthew 15:21-28, Mark 7:24-30</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="character-card male-card">
+                <h3>Cleopas</h3>
+                <p>One of the disciples who encountered the risen Jesus on the road to Emmaus.</p>
+                <div class="scripture-list">
+                    <h4>Scripture References:</h4>
+                    <ul>
+                        <li>Road to Emmaus: Luke 24:13-35</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
